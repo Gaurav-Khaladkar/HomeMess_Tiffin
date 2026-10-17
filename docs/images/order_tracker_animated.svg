@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="trackBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="activeBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2e7d32" />
+      <stop offset="50%" stop-color="#e65100" />
+      <stop offset="100%" stop-color="#ff9100" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes beamFlow {
+      0% { stroke-dashoffset: 200; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes pulseCircle {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 8px #ff6d00); }
+    }
+    @keyframes flameFlicker {
+      0%, 100% { transform: scale(1) rotate(-1deg); }
+      50% { transform: scale(1.12) rotate(2deg); fill: #ff9100; }
+    }
+    @keyframes scooterDrive {
+      0% { transform: translateX(0px); }
+      50% { transform: translateX(12px); }
+      100% { transform: translateX(0px); }
+    }
+    @keyframes wheelSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes otpGlow {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 1; filter: drop-shadow(0 0 10px #00e676); }
+    }
+
+    .beam-path {
+      stroke-dasharray: 12 8;
+      animation: beamFlow 3s linear infinite;
+    }
+    .pulsing-step {
+      animation: pulseCircle 2s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .flame-anim {
+      animation: flameFlicker 1.2s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .scooter-anim {
+      animation: scooterDrive 3s ease-in-out infinite;
+    }
+    .wheel {
+      animation: wheelSpin 1s linear infinite;
+      transform-origin: center;
+    }
+    .otp-badge {
+      animation: otpGlow 2s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Card Background -->
+  <rect width="900" height="220" rx="14" fill="url(#trackBg)" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Top Status Banner -->
+  <g transform="translate(30, 28)">
+    <rect x="0" y="0" width="180" height="26" rx="13" fill="#e65100" opacity="0.2" stroke="#ff9100" stroke-width="1" />
+    <circle cx="12" cy="13" r="4" fill="#00e676" />
+    <text x="24" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffb74d" letter-spacing="0.5">
+      LIVE 5-STEP LIFECYCLE
+    </text>
+
+    <text x="200" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">
+      Real-Time Order Tracking &amp; OTP Handover Mechanism
+    </text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- CONNECTING TIMELINE TRACKS -->
+  <!-- ============================================== -->
+
+  <!-- Base Inactive Grey Track -->
+  <line x1="100" y1="110" x2="800" y2="110" stroke="#334155" stroke-width="6" stroke-linecap="round" />
+
+  <!-- Active Glowing Animated Beam from Step 1 to Step 4 -->
+  <line x1="100" y1="110" x2="620" y2="110" stroke="url(#activeBeam)" stroke-width="6" stroke-linecap="round" class="beam-path" filter="url(#neonGlow)" />
+
+  <!-- ============================================== -->
+  <!-- STEP 1: PLACED (Done) -->
+  <!-- ============================================== -->
+  <g transform="translate(100, 110)">
+    <!-- Node Outer Circle -->
+    <circle cx="0" cy="0" r="22" fill="#1b5e20" stroke="#00e676" stroke-width="2.5" />
+    <!-- Checkmark Icon -->
+    <path d="M-7,0 L-2,5 L8,-5" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Text Labels -->
+    <text x="0" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#00e676">
+      1. PLACED
+    </text>
+    <text x="0" y="54" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="400" fill="#94a3b8">
+      Cart Checked Out
+    </text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- STEP 2: ACCEPTED (Done) -->
+  <!-- ============================================== -->
+  <g transform="translate(275, 110)">
+    <circle cx="0" cy="0" r="22" fill="#1b5e20" stroke="#00e676" stroke-width="2.5" />
+    <!-- Chef Hat Icon -->
+    <text x="0" y="7" text-anchor="middle" font-size="18">👩‍🍳</text>
+    
+    <text x="0" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#00e676">
+      2. ACCEPTED
+    </text>
+    <text x="0" y="54" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="400" fill="#94a3b8">
+      Mess Verified
+    </text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- STEP 3: PREPARING (Pulsing Flame) -->
+  <!-- ============================================== -->
+  <g transform="translate(450, 110)">
+    <!-- Pulsing Outer Ring -->
+    <circle cx="0" cy="0" r="25" fill="#e65100" opacity="0.3" class="pulsing-step" />
+    <circle cx="0" cy="0" r="22" fill="#bf360c" stroke="#ff9100" stroke-width="2.5" />
+    <!-- Animated Cooking Pot / Flame -->
+    <text x="0" y="7" text-anchor="middle" font-size="18" class="flame-anim">🍳</text>
+    
+    <text x="0" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ff9100">
+      3. PREPARING
+    </text>
+    <text x="0" y="54" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="400" fill="#ffccbc">
+      Hot on Stove &amp; Packed
+    </text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- STEP 4: OUT FOR DELIVERY (Animated Scooter Riding) -->
+  <!-- ============================================== -->
+  <g transform="translate(625, 110)" class="scooter-anim">
+    <circle cx="0" cy="0" r="26" fill="#e65100" stroke="#ffd54f" stroke-width="2.5" filter="url(#neonGlow)" />
+    <!-- Scooter Icon -->
+    <text x="0" y="7" text-anchor="middle" font-size="20">🛵</text>
+    
+    <text x="0" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffd54f">
+      4. ON THE WAY
+    </text>
+    <text x="0" y="54" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="400" fill="#ffe082">
+      Rider in Transit
+    </text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- STEP 5: DELIVERED (Handover via OTP) -->
+  <!-- ============================================== -->
+  <g transform="translate(800, 110)">
+    <circle cx="0" cy="0" r="22" fill="#1e293b" stroke="#64748b" stroke-width="2" />
+    <!-- Door / Delivery Box Icon -->
+    <text x="0" y="7" text-anchor="middle" font-size="17">🍱</text>
+    
+    <text x="0" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">
+      5. DELIVERED
+    </text>
+    <text x="0" y="54" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="400" fill="#64748b">
+      Hostel Handover
+    </text>
+  </g>
+
+  <!-- Floating Active OTP Badge above Step 4 & 5 -->
+  <g transform="translate(670, 48)" class="otp-badge">
+    <rect x="0" y="0" width="135" height="28" rx="6" fill="#000000" stroke="#00e676" stroke-width="1.5" />
+    <text x="10" y="18" font-family="Courier, monospace" font-size="12" font-weight="bold" fill="#00e676">
+      🔐 OTP: 4829
+    </text>
+  </g>
+
+</svg>

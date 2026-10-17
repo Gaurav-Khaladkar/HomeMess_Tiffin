@@ -1,0 +1,443 @@
+/* Home Mess Tiffin Service - Android Studio Project
+   Created for Sir Parashurambhau College, Pune
+   Authors: Gaurav Kaluram Khaladkar & Aditay More
+*/
+
+:root {
+  --primary: #e65100;
+  --primary-dark: #bf360c;
+  --primary-light: #fff3e0;
+  --accent: #2e7d32;
+  --accent-light: #e8f5e9;
+  --dark: #1e293b;
+  --gray: #64748b;
+  --light-gray: #f8fafc;
+  --border: #e2e8f0;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: var(--dark);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* App Header */
+.app-header {
+  background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+  color: #ffffff;
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.brand-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+/* Auth Screens */
+.auth-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)),
+              url('https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.auth-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 22px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  animation: slideUp 0.35s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-input-group {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.auth-input-group i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+.auth-input-group .form-control {
+  padding-left: 42px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.auth-input-group .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.15);
+}
+
+.btn-primary-custom {
+  background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+  color: #ffffff;
+  border: none;
+  height: 48px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.btn-primary-custom:hover, .btn-primary-custom:active {
+  background: linear-gradient(135deg, #d84315 0%, #9c27b0 100%);
+  color: #ffffff;
+  transform: scale(0.99);
+}
+
+.btn-green-custom {
+  background: #43a047;
+  color: #ffffff;
+  border: none;
+  height: 48px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-green-custom:hover {
+  background: #2e7d32;
+  color: #ffffff;
+}
+
+/* Category Filter Pills */
+.category-scroller {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 14px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.category-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.category-pill.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary-dark);
+}
+
+/* Food / Dish Cards */
+.dish-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 14px;
+  transition: transform 0.15s ease;
+}
+
+.dish-card:active {
+  transform: scale(0.99);
+}
+
+.dish-img-wrapper {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.dish-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dish-category-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.dish-veg-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 2px 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dish-body {
+  padding: 12px 14px;
+}
+
+.dish-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.dish-desc {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dish-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dish-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+/* Quantity Counter */
+.qty-controller {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.qty-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-val {
+  width: 28px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Bottom Navigation (Chef Screen & App) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0 10px 0;
+  z-index: 1030;
+  box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.nav-item-btn {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.nav-item-btn i {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.nav-item-btn.active {
+  color: var(--primary);
+}
+
+.nav-item-btn .nav-badge {
+  position: absolute;
+  top: -2px;
+  right: 14px;
+  background: #e11d48;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 9px;
+  padding: 1px 5px;
+}
+
+/* Sticky Cart Bar */
+.cart-floating-bar {
+  position: fixed;
+  bottom: 60px;
+  left: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(230, 81, 0, 0.4);
+  z-index: 1010;
+  animation: pulseIn 0.3s ease;
+}
+
+@keyframes pulseIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Timeline Stages for Order Tracking */
+.tracking-stepper {
+  position: relative;
+  padding-left: 32px;
+  margin: 16px 0;
+}
+
+.tracking-stepper::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: #e2e8f0;
+}
+
+.step-node {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.step-node:last-child {
+  margin-bottom: 0;
+}
+
+.step-icon {
+  position: absolute;
+  left: -32px;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.step-node.completed .step-icon {
+  border-color: #2e7d32;
+  background: #2e7d32;
+  color: #ffffff;
+}
+
+.step-node.active .step-icon {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(230, 81, 0, 0.2);
+}
+
+.step-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.step-desc {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+/* Post Dish Camera Icon */
+.post-dish-camera {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px dashed #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 28px;
+  transition: all 0.2s;
+}
+
+.post-dish-camera:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
+}

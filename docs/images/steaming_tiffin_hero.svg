@@ -1,0 +1,301 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#180b02" />
+      <stop offset="50%" stop-color="#2d1303" />
+      <stop offset="100%" stop-color="#140700" />
+    </linearGradient>
+
+    <radialGradient id="glowWarm" cx="30%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6d00" stop-opacity="0.35" />
+      <stop offset="70%" stop-color="#bf360c" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Metallic Stainless Steel Gradients -->
+    <linearGradient id="steelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cfd8dc" />
+      <stop offset="25%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#90a4ae" />
+      <stop offset="75%" stop-color="#eceff1" />
+      <stop offset="100%" stop-color="#78909c" />
+    </linearGradient>
+
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd54f" />
+      <stop offset="35%" stop-color="#fff9c4" />
+      <stop offset="65%" stop-color="#ffb300" />
+      <stop offset="100%" stop-color="#ff8f00" />
+    </linearGradient>
+
+    <!-- Food Gradients -->
+    <radialGradient id="dalGrad" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#fff176" />
+      <stop offset="60%" stop-color="#fbc02d" />
+      <stop offset="100%" stop-color="#f57f17" />
+    </radialGradient>
+
+    <radialGradient id="paneerGrad" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#ff8a65" />
+      <stop offset="65%" stop-color="#e64a19" />
+      <stop offset="100%" stop-color="#bf360c" />
+    </radialGradient>
+
+    <radialGradient id="chutneyGrad" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#aed581" />
+      <stop offset="70%" stop-color="#558b2f" />
+      <stop offset="100%" stop-color="#33691e" />
+    </radialGradient>
+
+    <!-- Filters for Glow -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="steamFilter" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" />
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    @keyframes steamRise1 {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      20% { opacity: 0.65; }
+      60% { opacity: 0.35; }
+      100% { transform: translateY(-55px) scaleX(1.4); opacity: 0; }
+    }
+    @keyframes steamRise2 {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      30% { opacity: 0.7; }
+      70% { opacity: 0.25; }
+      100% { transform: translateY(-65px) scaleX(1.5); opacity: 0; }
+    }
+    @keyframes simmerGlow {
+      0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 4px #ffb300); }
+      50% { opacity: 1; filter: drop-shadow(0 0 10px #ff6f00); }
+    }
+    @keyframes pulseBadge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+    @keyframes sparkleRotate {
+      0% { transform: rotate(0deg) scale(0.8); opacity: 0.3; }
+      50% { transform: rotate(180deg) scale(1.2); opacity: 0.9; }
+      100% { transform: rotate(360deg) scale(0.8); opacity: 0.3; }
+    }
+    @keyframes dashCycle {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -40; }
+    }
+
+    .tiffin-group { animation: floatGentle 4s ease-in-out infinite; }
+    .steam-1 { animation: steamRise1 3s ease-out infinite; }
+    .steam-2 { animation: steamRise2 3.6s ease-out infinite 1s; }
+    .steam-3 { animation: steamRise1 3.2s ease-out infinite 1.8s; }
+    .simmer { animation: simmerGlow 2.5s ease-in-out infinite; }
+    .badge-pulse { animation: pulseBadge 3s ease-in-out infinite; transform-origin: center; }
+    .sparkle { animation: sparkleRotate 6s linear infinite; transform-origin: center; }
+    .dash-line { stroke-dasharray: 6 4; animation: dashCycle 2s linear infinite; }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="900" height="320" rx="16" fill="url(#bgGrad)" />
+  <rect width="900" height="320" rx="16" fill="url(#glowWarm)" />
+
+  <!-- Background Decorative Grid & Kitchen Motifs -->
+  <g opacity="0.07" stroke="#ff9800" stroke-width="1">
+    <line x1="0" y1="80" x2="900" y2="80" />
+    <line x1="0" y1="160" x2="900" y2="160" />
+    <line x1="0" y1="240" x2="900" y2="240" />
+    <line x1="150" y1="0" x2="150" y2="320" />
+    <line x1="450" y1="0" x2="450" y2="320" />
+    <line x1="750" y1="0" x2="750" y2="320" />
+  </g>
+
+  <!-- Floating Culinary Sparkles (Spices & Aroma) -->
+  <g class="sparkle" style="transform-origin: 320px 80px;">
+    <polygon points="320,70 323,77 330,80 323,83 320,90 317,83 310,80 317,77" fill="#ffe082" />
+  </g>
+  <g class="sparkle" style="animation-duration: 8s; transform-origin: 120px 180px;">
+    <polygon points="120,173 122,178 127,180 122,182 120,187 118,182 113,180 118,178" fill="#ffb74d" />
+  </g>
+  <g class="sparkle" style="animation-duration: 5s; transform-origin: 780px 140px;">
+    <polygon points="780,132 783,137 788,140 783,143 780,148 777,143 772,140 777,137" fill="#ffd54f" />
+  </g>
+
+  <!-- ============================================== -->
+  <!-- LEFT GRAPHIC: 3-TIER TIFFIN DABBA & STEAM -->
+  <!-- ============================================== -->
+  <g class="tiffin-group" transform="translate(40, 20)">
+
+    <!-- Gentle Shadow Beneath Tiffin -->
+    <ellipse cx="140" cy="275" rx="100" ry="14" fill="#000000" opacity="0.6" filter="url(#softGlow)" />
+
+    <!-- STEAM PARTICLES RISING FROM TIFFIN -->
+    <g filter="url(#steamFilter)" fill="none" stroke="#ffffff" stroke-linecap="round">
+      <path class="steam-1" d="M125,95 Q115,70 128,45 T118,15" stroke-width="5" />
+      <path class="steam-2" d="M145,95 Q155,65 140,40 T150,10" stroke-width="6" />
+      <path class="steam-3" d="M165,100 Q155,75 168,50 T160,20" stroke-width="4.5" />
+    </g>
+
+    <!-- Tiffin Carry Handle -->
+    <path d="M78,140 C78,65 202,65 202,140" fill="none" stroke="url(#steelGrad)" stroke-width="7" stroke-linecap="round" />
+    <rect x="120" y="68" width="40" height="10" rx="5" fill="#455a64" />
+
+    <!-- Tier 1: Top Container (Dessert / Salad) -->
+    <g>
+      <rect x="80" y="115" width="120" height="42" rx="6" fill="url(#steelGrad)" stroke="#546e7a" stroke-width="1.5" />
+      <line x1="80" y1="123" x2="200" y2="123" stroke="#b0bec5" stroke-width="2" />
+      <!-- Side Locking Clamps -->
+      <rect x="73" y="125" width="8" height="22" rx="2" fill="#78909c" />
+      <rect x="199" y="125" width="8" height="22" rx="2" fill="#78909c" />
+    </g>
+
+    <!-- Tier 2: Middle Container (Dal / Sabzi) -->
+    <g>
+      <rect x="80" y="160" width="120" height="45" rx="6" fill="url(#steelGrad)" stroke="#546e7a" stroke-width="1.5" />
+      <line x1="80" y1="168" x2="200" y2="168" stroke="#b0bec5" stroke-width="2" />
+      <rect x="73" y="172" width="8" height="22" rx="2" fill="#78909c" />
+      <rect x="199" y="172" width="8" height="22" rx="2" fill="#78909c" />
+    </g>
+
+    <!-- Tier 3: Bottom Container (Steamed Basmati Rice & Chapatis) -->
+    <g>
+      <rect x="80" y="208" width="120" height="52" rx="6" fill="url(#steelGrad)" stroke="#546e7a" stroke-width="1.5" />
+      <line x1="80" y1="216" x2="200" y2="216" stroke="#b0bec5" stroke-width="2" />
+      <rect x="73" y="222" width="8" height="24" rx="2" fill="#78909c" />
+      <rect x="199" y="222" width="8" height="24" rx="2" fill="#78909c" />
+    </g>
+
+    <!-- Vertical Side Latch Straps -->
+    <line x1="77" y1="118" x2="77" y2="250" stroke="#37474f" stroke-width="3" />
+    <line x1="203" y1="118" x2="203" y2="250" stroke="#37474f" stroke-width="3" />
+
+    <!-- ============================================== -->
+    <!-- LITTLE BOWLS (KATORIS) IN FRONT OF TIFFIN -->
+    <!-- ============================================== -->
+
+    <!-- Katori 1: Golden Dal Tadka (Simmering) -->
+    <g class="simmer" transform="translate(195, 185)">
+      <ellipse cx="40" cy="55" rx="42" ry="12" fill="#000" opacity="0.4" />
+      <!-- Bowl Exterior -->
+      <path d="M0,35 C0,65 80,65 80,35 Z" fill="url(#brassGrad)" stroke="#e65100" stroke-width="1" />
+      <ellipse cx="40" cy="35" rx="40" ry="15" fill="url(#brassGrad)" />
+      <!-- Soup Surface -->
+      <ellipse cx="40" cy="35" rx="35" ry="12" fill="url(#dalGrad)" />
+      <!-- Tadka mustard seeds and coriander leaf -->
+      <circle cx="34" cy="33" r="1.5" fill="#3e2723" />
+      <circle cx="48" cy="36" r="1.5" fill="#3e2723" />
+      <circle cx="42" cy="38" r="1.2" fill="#bf360c" />
+      <circle cx="38" cy="34" r="1.2" fill="#e65100" />
+      <!-- Fresh Coriander Leaf -->
+      <path d="M40,32 Q44,30 46,34 Q42,35 40,32" fill="#2e7d32" />
+      <path d="M38,34 Q34,31 36,36 Q38,35 38,34" fill="#388e3c" />
+    </g>
+
+    <!-- Katori 2: Paneer / Veg Curry -->
+    <g transform="translate(15, 205)">
+      <ellipse cx="35" cy="50" rx="38" ry="10" fill="#000" opacity="0.4" />
+      <path d="M0,30 C0,56 70,56 70,30 Z" fill="url(#steelGrad)" stroke="#455a64" stroke-width="1" />
+      <ellipse cx="35" cy="30" rx="35" ry="13" fill="url(#steelGrad)" />
+      <ellipse cx="35" cy="30" rx="31" ry="10" fill="url(#paneerGrad)" />
+      <!-- Floating Paneer Cubes -->
+      <rect x="25" y="27" width="9" height="6" rx="1.5" fill="#fffde7" />
+      <rect x="38" y="28" width="8" height="5" rx="1.5" fill="#fffde7" />
+      <circle cx="30" cy="28" r="1" fill="#2e7d32" />
+    </g>
+
+    <!-- Katori 3: Green Chutney / Mint Raita -->
+    <g transform="translate(140, 225)">
+      <ellipse cx="28" cy="40" rx="30" ry="8" fill="#000" opacity="0.4" />
+      <path d="M0,22 C0,44 56,44 56,22 Z" fill="url(#brassGrad)" stroke="#f57f17" stroke-width="1" />
+      <ellipse cx="28" cy="22" rx="28" ry="10" fill="url(#brassGrad)" />
+      <ellipse cx="28" cy="22" rx="24" ry="8" fill="url(#chutneyGrad)" />
+      <circle cx="28" cy="21" r="2" fill="#fff9c4" />
+    </g>
+
+  </g>
+
+  <!-- ============================================== -->
+  <!-- RIGHT CONTENT: BRANDING, TITLE & VALUE PROPS -->
+  <!-- ============================================== -->
+  <g transform="translate(365, 35)">
+
+    <!-- Category Pill Badge -->
+    <g class="badge-pulse">
+      <rect x="0" y="0" width="235" height="30" rx="15" fill="#ff6d00" opacity="0.25" stroke="#ff9100" stroke-width="1.5" />
+      <circle cx="15" cy="15" r="5" fill="#00e676" />
+      <text x="28" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffb74d" letter-spacing="1">
+        LIVE HOME KITCHEN • PUNE
+      </text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="900" fill="#ffffff" letter-spacing="-0.5">
+      HomeMess <tspan fill="#ff9100">Tiffin</tspan>
+    </text>
+
+    <!-- Subtitle & Punchline -->
+    <text x="0" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="500" fill="#ffccbc">
+      🥣 The "Little Bowls" (Katoris) Experience • Pure, Fresh &amp; Punctual
+    </text>
+
+    <!-- Three Value Highlights (Icons + Descriptions) -->
+    <g transform="translate(0, 130)">
+
+      <!-- Highlight 1: Fresh Daily Cooking -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="490" height="38" rx="8" fill="#ffffff" opacity="0.06" stroke="#ffffff" stroke-width="0.5" />
+        <text x="14" y="24" font-size="18">👩‍🍳</text>
+        <text x="44" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff">
+          Mother's Kitchen Freshness:
+        </text>
+        <text x="210" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="400" fill="#b0bec5">
+          No preservatives, 100% wholesome homemade food.
+        </text>
+      </g>
+
+      <!-- Highlight 2: Authentic Katori Thalis -->
+      <g transform="translate(0, 46)">
+        <rect x="0" y="0" width="490" height="38" rx="8" fill="#ffffff" opacity="0.06" stroke="#ffffff" stroke-width="0.5" />
+        <text x="14" y="24" font-size="18">🍱</text>
+        <text x="44" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffb74d">
+          Little Bowls Thali System:
+        </text>
+        <text x="200" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="400" fill="#b0bec5">
+          Dal, Katachi Amti, Sukhi Bhaji, Soft Rotis &amp; Desserts.
+        </text>
+      </g>
+
+      <!-- Highlight 3: Punctual Delivery & OTP Handover -->
+      <g transform="translate(0, 92)">
+        <rect x="0" y="0" width="490" height="38" rx="8" fill="#ffffff" opacity="0.06" stroke="#ffffff" stroke-width="0.5" />
+        <text x="14" y="24" font-size="18">🔐</text>
+        <text x="44" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#81c784">
+          Secure OTP Handover:
+        </text>
+        <text x="180" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="400" fill="#b0bec5">
+          Secret 4-digit code guarantees the right tiffin to you.
+        </text>
+      </g>
+
+    </g>
+
+    <!-- Bottom Location Footer Badge -->
+    <g transform="translate(0, 275)">
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#ffab91" letter-spacing="0.5">
+        📍 Tilak Road • Sadashiv Peth • SP College • Pune 411030
+      </text>
+    </g>
+
+  </g>
+
+  <!-- Border Accent -->
+  <rect x="1" y="1" width="898" height="318" rx="15" fill="none" stroke="#e65100" stroke-width="1.5" opacity="0.5" />
+</svg>

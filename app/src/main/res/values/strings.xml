@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Home Mess Tiffin</string>
+    <string name="college_name">Sir Parashurambhau College (SP College), Pune</string>
+    <string name="project_title">Tiffin Service Android Application (Home Mess)</string>
+    <string name="author_name">Gaurav Kaluramm Khaladkar &amp; Aditay More</string>
+    <string name="loading_msg">Loading Home Mess System…</string>
+</resources>

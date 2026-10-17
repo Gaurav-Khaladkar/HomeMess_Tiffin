@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 180" width="100%" height="100%">
+  <defs>
+    <linearGradient id="secBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f" />
+      <stop offset="100%" stop-color="#112240" />
+    </linearGradient>
+
+    <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e676" />
+      <stop offset="50%" stop-color="#ffd54f" />
+      <stop offset="100%" stop-color="#00e676" />
+    </linearGradient>
+
+    <filter id="neonPulse" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes digitGlow {
+      0%, 100% { fill: #00e676; filter: drop-shadow(0 0 3px #00e676); }
+      50% { fill: #b9f6ca; filter: drop-shadow(0 0 8px #69f0ae); }
+    }
+    @keyframes dataFly {
+      0% { transform: translateX(0px); opacity: 0; }
+      30% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { transform: translateX(180px); opacity: 0; }
+    }
+    @keyframes stampBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    .digit-code { animation: digitGlow 2s ease-in-out infinite; }
+    .data-packet { animation: dataFly 2s linear infinite; }
+    .stamp-anim { animation: stampBounce 2.5s ease-in-out infinite; transform-origin: center; }
+  </style>
+
+  <!-- Card Background -->
+  <rect width="880" height="180" rx="14" fill="url(#secBg)" stroke="#1e3a8a" stroke-width="1.5" />
+
+  <!-- ============================================== -->
+  <!-- LEFT: CUSTOMER HANDSET (OTP GENERATED) -->
+  <!-- ============================================== -->
+  <g transform="translate(40, 25)">
+    <!-- Phone Mockup Frame -->
+    <rect x="0" y="0" width="220" height="130" rx="12" fill="#020c1b" stroke="#38bdf8" stroke-width="1.5" />
+    <circle cx="110" cy="10" r="3" fill="#334155" />
+
+    <!-- Title -->
+    <text x="110" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#94a3b8">
+      STUDENT PHONE SCREEN
+    </text>
+
+    <!-- OTP Display Box -->
+    <rect x="25" y="44" width="170" height="48" rx="8" fill="#0f172a" stroke="#00e676" stroke-width="1.5" filter="url(#neonPulse)" />
+    
+    <!-- Secret Digits -->
+    <text x="110" y="78" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="28" font-weight="900" letter-spacing="8" class="digit-code">
+      4829
+    </text>
+
+    <text x="110" y="112" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#38bdf8">
+      🔒 Confidential Delivery Code
+    </text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- MIDDLE: ANIMATED DATA BEAM & HANDOVER ARROW -->
+  <!-- ============================================== -->
+  <g transform="translate(290, 80)">
+    <!-- Base Path -->
+    <line x1="0" y1="10" x2="280" y2="10" stroke="#1e293b" stroke-width="4" stroke-dasharray="6 6" />
+
+    <!-- Animated Data Packets Flying -->
+    <g class="data-packet">
+      <rect x="0" y="2" width="28" height="16" rx="4" fill="#00e676" opacity="0.9" />
+      <text x="14" y="14" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#020c1b">4829</text>
+    </g>
+
+    <!-- Lock to Key Icon Transition in Center -->
+    <circle cx="140" cy="10" r="18" fill="#0f172a" stroke="#ffd54f" stroke-width="2" />
+    <text x="140" y="16" text-anchor="middle" font-size="14">🤝</text>
+
+    <text x="140" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffd54f">
+      Physical Handover
+    </text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- RIGHT: DELIVERY RIDER SCANNER (VERIFIED) -->
+  <!-- ============================================== -->
+  <g transform="translate(600, 25)">
+    <!-- Scanner Frame -->
+    <rect x="0" y="0" width="240" height="130" rx="12" fill="#020c1b" stroke="#00e676" stroke-width="1.5" />
+    <circle cx="120" cy="10" r="3" fill="#334155" />
+
+    <text x="120" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#94a3b8">
+      RIDER APP VERIFICATION
+    </text>
+
+    <!-- Verified Badge -->
+    <g class="stamp-anim" transform="translate(120, 75)">
+      <rect x="-85" y="-22" width="170" height="44" rx="8" fill="#1b5e20" stroke="#00e676" stroke-width="2" filter="url(#neonPulse)" />
+      <text x="0" y="6" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#ffffff" letter-spacing="1">
+        MATCHED &amp; DELIVERED ✓
+      </text>
+    </g>
+
+    <text x="120" y="118" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#86efac">
+      Order #101 Closed • Trip Credited!
+    </text>
+  </g>
+
+</svg>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Home Mess - Tiffin Service Android App</title>
+  
+  <!-- Bootstrap 5.3.3 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Android App Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- 1. LOGIN SCREEN (Page 16 of Project Report) -->
+  <!-- ========================================== -->
+  <section id="view-login" class="app-view auth-bg">
+    <div class="auth-card">
+      <div class="text-center mb-3">
+        <div style="font-size: 42px;">🍱</div>
+        <h4 class="fw-bold mb-0 text-dark">HOME MESS</h4>
+        <small class="text-muted">Tiffin Service Android Application</small>
+        <div class="mt-1">
+          <span class="badge bg-light text-secondary border" onclick="showProjectInfoModal()" style="cursor:pointer;">
+            🎓 SP College Pune • Project Info
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Role Selection for Easy Evaluation in Android Studio -->
+      <div class="mb-3 p-2 bg-light rounded-3 text-center">
+        <small class="fw-bold text-muted d-block mb-1">QUICK TEST LOGIN (1-CLICK):</small>
+        <div class="btn-group btn-group-sm w-100" role="group">
+          <button type="button" class="btn btn-outline-warning text-dark fw-bold" onclick="quickLogin('customer')">Student</button>
+          <button type="button" class="btn btn-outline-danger fw-bold" onclick="quickLogin('chef')">Chef / Mess</button>
+          <button type="button" class="btn btn-outline-success fw-bold" onclick="quickLogin('delivery')">Rider</button>
+        </div>
+      </div>
+
+      <form id="loginForm">
+        <div class="auth-input-group">
+          <i class="bi bi-envelope"></i>
+          <input type="text" id="loginIdentifier" class="form-control" placeholder="Email id or Mobile Number" value="customer@gmail.com" required>
+        </div>
+
+        <div class="auth-input-group">
+          <i class="bi bi-lock"></i>
+          <input type="password" id="loginPassword" class="form-control" placeholder="Password" value="pass123" required>
+        </div>
+
+        <div class="d-flex justify-content-end mb-3">
+          <a href="#" class="text-decoration-none small text-muted" onclick="toast('Password reset link sent to registered email!')">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-green-custom w-100 mb-3 shadow-sm">
+          LOGIN
+        </button>
+
+        <div class="text-center mb-3 small">
+          <span class="text-muted">Do not have an account? </span>
+          <a href="#" class="text-decoration-none fw-bold text-success" onclick="showView('view-register')">SignUp</a>
+        </div>
+
+        <div class="position-relative text-center my-3">
+          <hr class="text-muted">
+          <span class="position-absolute top-50 start-50 translate-middle bg-white px-2 small text-muted">OR</span>
+        </div>
+
+        <button type="button" class="btn btn-primary w-100 py-2 rounded-3 fw-bold" onclick="toast('Enter phone number in registration to verify via OTP!')">
+          <i class="bi bi-telephone-fill me-2"></i> SignIn with PHONE
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 2. REGISTRATION SCREEN (Page 17 of Report) -->
+  <!-- ============================================== -->
+  <section id="view-register" class="app-view auth-bg d-none">
+    <div class="auth-card" style="max-height: 90vh; overflow-y: auto;">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-sm btn-light rounded-circle me-2" onclick="showView('view-login')">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+        <h5 class="fw-bold mb-0">Create New Account</h5>
+      </div>
+
+      <form id="registerForm">
+        <div class="mb-2">
+          <label class="small text-muted fw-bold">Full Name</label>
+          <input type="text" id="regName" class="form-control form-control-sm" placeholder="e.g. Gaurav Khaladkar" required>
+        </div>
+
+        <div class="mb-2">
+          <label class="small text-muted fw-bold">Account Role</label>
+          <select id="regRole" class="form-select form-select-sm">
+            <option value="customer" selected>Customer / Student</option>
+            <option value="chef">Mess Owner / Chef</option>
+            <option value="delivery">Delivery Agent</option>
+          </select>
+        </div>
+
+        <div class="mb-2">
+          <label class="small text-muted fw-bold">Email Address</label>
+          <input type="email" id="regEmail" class="form-control form-control-sm" placeholder="name@example.com" required>
+        </div>
+
+        <div class="mb-2">
+          <label class="small text-muted fw-bold">Mobile Number</label>
+          <div class="input-group input-group-sm">
+            <span class="input-group-text bg-white">🇮🇳 +91</span>
+            <input type="tel" id="regPhone" class="form-control" placeholder="9527298977" required>
+          </div>
+        </div>
+
+        <div class="row g-2 mb-2">
+          <div class="col-6">
+            <label class="small text-muted fw-bold">Password</label>
+            <input type="password" id="regPassword" class="form-control form-control-sm" placeholder="••••••••" required>
+          </div>
+          <div class="col-6">
+            <label class="small text-muted fw-bold">Confirm Password</label>
+            <input type="password" class="form-control form-control-sm" placeholder="••••••••" required>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="small text-muted fw-bold">House / Street no</label>
+          <input type="text" id="regAddress" class="form-control form-control-sm" placeholder="Flat 402, Sai Residency" required>
+        </div>
+
+        <div class="row g-2 mb-2">
+          <div class="col-7">
+            <label class="small text-muted fw-bold">Area</label>
+            <input type="text" id="regArea" class="form-control form-control-sm" placeholder="Tilak Road / Sadashiv Peth" required>
+          </div>
+          <div class="col-5">
+            <label class="small text-muted fw-bold">Post Code</label>
+            <input type="text" id="regPincode" class="form-control form-control-sm" placeholder="411030" required>
+          </div>
+        </div>
+
+        <div class="row g-2 mb-3">
+          <div class="col-6">
+            <label class="small text-muted fw-bold">State</label>
+            <input type="text" class="form-control form-control-sm" value="Maharashtra" readonly>
+          </div>
+          <div class="col-6">
+            <label class="small text-muted fw-bold">City</label>
+            <input type="text" id="regCity" class="form-control form-control-sm" value="Pune" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-green-custom w-100 shadow-sm">
+          REGISTER ACCOUNT
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 3. CUSTOMER / STUDENT HOME VIEW (Page 13)      -->
+  <!-- ============================================== -->
+  <section id="view-customer" class="app-view d-none pb-5">
+    <!-- Header -->
+    <header class="app-header d-flex justify-content-between align-items-center">
+      <div>
+        <div class="fw-bold fs-6">🍱 Annapurna Home Mess</div>
+        <small class="text-white-50"><i class="bi bi-geo-alt"></i> Tilak Road, Pune • ⭐ 4.8</small>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-sm btn-outline-light rounded-pill px-2 py-1" onclick="showProjectInfoModal()">
+          <i class="bi bi-info-circle"></i> Info
+        </button>
+        <button class="btn btn-sm btn-light rounded-circle" onclick="logout()" title="Logout">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Welcome Banner -->
+    <div class="p-3 bg-white border-bottom">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h6 class="mb-0 fw-bold">Namaste, <span class="user-display-name text-primary">Student</span>!</h6>
+          <small class="text-muted">Fresh Ghar Ka Khana Delivered to Your Hostel / Room</small>
+        </div>
+        <button class="btn btn-sm btn-outline-dark rounded-pill" onclick="callPhone('9822012345')">
+          <i class="bi bi-telephone"></i> Mess Owner
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Scroller -->
+    <div class="category-scroller">
+      <div class="category-pill active" data-category="All" onclick="filterCategory('All')">All Meals</div>
+      <div class="category-pill" data-category="Thali" onclick="filterCategory('Thali')">Special Thalis</div>
+      <div class="category-pill" data-category="Breakfast" onclick="filterCategory('Breakfast')">Breakfast</div>
+      <div class="category-pill" data-category="Special" onclick="filterCategory('Special')">Festive Specials</div>
+      <div class="category-pill" data-category="Non-Veg" onclick="filterCategory('Non-Veg')">Non-Veg</div>
+      <div class="category-pill" data-category="Diet" onclick="filterCategory('Diet')">Diet &amp; Protein</div>
+    </div>
+
+    <!-- Dishes List Container -->
+    <div class="p-3" id="dishesContainer">
+      <!-- Dynamic Dish Cards Injected Here -->
+    </div>
+
+    <!-- Sticky Floating Cart Bar -->
+    <div id="cartFloatingBar" class="cart-floating-bar d-none" onclick="openCheckoutModal()">
+      <div>
+        <div class="fw-bold" id="cartItemsCount">1 Tiffin Item</div>
+        <small class="text-white-50">Tap to Review &amp; Checkout</small>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="fs-5 fw-bold me-2" id="cartTotalPrice">₹120.00</span>
+        <i class="bi bi-arrow-right-circle-fill fs-4"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 4. CHEF / MESS OWNER VIEW (Pages 18 & 19)     -->
+  <!-- ============================================== -->
+  <section id="view-chef" class="app-view d-none pb-5">
+    <!-- Header -->
+    <header class="app-header d-flex justify-content-between align-items-center">
+      <div>
+        <div class="fw-bold fs-6">👨‍🍳 Chef / Mess Kitchen Portal</div>
+        <small class="text-white-50">Annapurna Home Mess • Live Preparation</small>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-sm btn-outline-light rounded-pill px-2 py-1" onclick="showProjectInfoModal()">
+          <i class="bi bi-info-circle"></i>
+        </button>
+        <button class="btn btn-sm btn-light rounded-circle" onclick="logout()">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Sub-Section A: Dashboard / Home -->
+    <div id="chefHomeSection" class="p-3 d-none">
+      <div class="row g-3 mb-3">
+        <div class="col-6">
+          <div class="card p-3 border-0 shadow-sm rounded-4 bg-white text-center">
+            <h3 class="fw-bold text-primary mb-0">48</h3>
+            <small class="text-muted">Today's Tiffins</small>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card p-3 border-0 shadow-sm rounded-4 bg-white text-center">
+            <h3 class="fw-bold text-success mb-0">₹4,820</h3>
+            <small class="text-muted">Daily Revenue</small>
+          </div>
+        </div>
+      </div>
+      <div class="card p-3 border-0 shadow-sm rounded-4 bg-white">
+        <h6 class="fw-bold mb-2">Kitchen Status</h6>
+        <div class="badge bg-success py-2 w-100 fs-6">Kitchen is OPEN for Orders</div>
+      </div>
+    </div>
+
+    <!-- Sub-Section B: Orders Management (Page 18 - "Shef screen") -->
+    <div id="chefOrdersSection" class="p-3">
+      <div class="btn-group w-100 mb-3 shadow-sm rounded-pill overflow-hidden p-1 bg-white">
+        <button id="btnTabToPrepare" class="btn btn-primary rounded-pill fw-bold btn-sm py-2" onclick="switchChefOrdersSubTab('to_prepare')">
+          <i class="bi bi-hourglass-split"></i> Orders to be Prepared
+        </button>
+        <button id="btnTabPrepared" class="btn btn-outline-primary rounded-pill fw-bold btn-sm py-2" onclick="switchChefOrdersSubTab('prepared')">
+          <i class="bi bi-check2-circle"></i> Prepared Orders
+        </button>
+      </div>
+
+      <div id="chefOrdersContainer">
+        <!-- Injected orders list -->
+      </div>
+    </div>
+
+    <!-- Sub-Section C: Post Dish (Page 19 of Project Report) -->
+    <div id="chefPostDishSection" class="auth-bg d-none" style="min-height: calc(100vh - 120px);">
+      <div class="auth-card" style="background: rgba(15, 23, 42, 0.92); color: #ffffff;">
+        <div class="text-center mb-3">
+          <h5 class="fw-bold text-white mb-1">Post Dish</h5>
+          <small class="text-white-50">Add new menu item to Home Mess</small>
+        </div>
+
+        <form id="postDishForm">
+          <!-- Camera upload area matching page 19 -->
+          <label for="dishPhotoInput" class="post-dish-camera" title="Upload Dish Photo">
+            <i class="bi bi-camera-fill"></i>
+          </label>
+          <input type="file" id="dishPhotoInput" accept="image/*" class="d-none" onchange="previewDishImage(event)">
+          <div class="text-center mb-3">
+            <img id="dishImagePreview" src="" class="d-none rounded-3 mx-auto" style="max-height: 100px; max-width: 100%; object-fit: cover;">
+          </div>
+
+          <div class="mb-3">
+            <label class="small text-white-50 fw-bold">Dish Name</label>
+            <input type="text" id="dishNameInput" class="form-control" placeholder="e.g. BREAKFAST-7.30 AM POHE" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="small text-white-50 fw-bold">Description</label>
+            <textarea id="dishDescInput" class="form-control" rows="2" placeholder="Ingredients, taste, and serving size"></textarea>
+          </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <label class="small text-white-50 fw-bold">Category</label>
+              <select id="dishCategorySelect" class="form-select">
+                <option value="Thali">Thali</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Special">Special</option>
+                <option value="Non-Veg">Non-Veg</option>
+                <option value="Diet">Diet</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label class="small text-white-50 fw-bold">Qty</label>
+              <input type="number" id="dishQtyInput" class="form-control" value="30">
+            </div>
+            <div class="col-3">
+              <label class="small text-white-50 fw-bold">Price (₹)</label>
+              <input type="number" id="dishPriceInput" class="form-control" value="120" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-danger w-100 py-2 fw-bold rounded-3 shadow">
+            POST DISH
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Chef Bottom Navigation Bar (Page 18) -->
+    <nav class="bottom-nav">
+      <button class="nav-item-btn chef-nav-btn" data-tab="home" onclick="switchChefNav('home')">
+        <i class="bi bi-house-door-fill"></i>
+        <span>Home</span>
+      </button>
+      <button class="nav-item-btn chef-nav-btn active" data-tab="orders" onclick="switchChefNav('orders')">
+        <i class="bi bi-receipt"></i>
+        <span>Orders</span>
+      </button>
+      <button class="nav-item-btn chef-nav-btn" data-tab="post_dish" onclick="switchChefNav('post_dish')">
+        <i class="bi bi-plus-circle-fill"></i>
+        <span>Post Dish</span>
+      </button>
+    </nav>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 5. DELIVERY AGENT VIEW (Page 14)              -->
+  <!-- ============================================== -->
+  <section id="view-delivery" class="app-view d-none pb-5">
+    <header class="app-header d-flex justify-content-between align-items-center">
+      <div>
+        <div class="fw-bold fs-6">🛵 Delivery Rider Portal</div>
+        <small class="text-white-50">Annapurna Mess • Active Route</small>
+      </div>
+      <button class="btn btn-sm btn-light rounded-circle" onclick="logout()">
+        <i class="bi bi-box-arrow-right text-danger"></i>
+      </button>
+    </header>
+
+    <div class="p-3 bg-white border-bottom mb-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h6 class="mb-0 fw-bold"><span class="user-display-name">Rider</span></h6>
+          <small class="text-success"><i class="bi bi-record-circle-fill"></i> Ready for Delivery Orders</small>
+        </div>
+        <span class="badge bg-light text-dark border p-2">Today: 14 Delivered</span>
+      </div>
+    </div>
+
+    <div class="p-3" id="deliveryOrdersContainer">
+      <!-- Injected delivery orders -->
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- MODAL: CHECKOUT & PAYMENT MODAL                -->
+  <!-- ============================================== -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold">🍱 Review Tiffin Order</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="checkoutItemsList" class="border-bottom pb-2 mb-3"></div>
+
+          <!-- Price Summary -->
+          <div class="d-flex justify-content-between small text-muted mb-1">
+            <span>Item Subtotal:</span>
+            <span id="checkoutSubtotal">₹0.00</span>
+          </div>
+          <div class="d-flex justify-content-between small text-muted mb-2">
+            <span>Tiffin Delivery &amp; Packaging:</span>
+            <span>₹20.00</span>
+          </div>
+          <div class="d-flex justify-content-between fs-5 fw-bold text-dark border-top pt-2 mb-3">
+            <span>Grand Total:</span>
+            <span id="checkoutGrandTotal" class="text-primary">₹0.00</span>
+          </div>
+
+          <!-- Address -->
+          <div class="mb-3">
+            <label class="small text-muted fw-bold">Delivery Address</label>
+            <textarea id="checkoutAddress" class="form-control form-control-sm" rows="2" placeholder="Hostel/Room/Flat address in Pune..."></textarea>
+          </div>
+
+          <!-- Payment Mode -->
+          <label class="small text-muted fw-bold mb-2">Select Payment Method</label>
+          <div class="card p-2 border mb-2">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="payUPI" value="UPI (GPay/PhonePe)" checked>
+              <label class="form-check-label fw-bold" for="payUPI">
+                <i class="bi bi-phone text-primary me-1"></i> UPI (Google Pay, PhonePe, Paytm)
+              </label>
+            </div>
+          </div>
+          <div class="card p-2 border mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="payCOD" value="Cash on Delivery">
+              <label class="form-check-label fw-bold" for="payCOD">
+                <i class="bi bi-cash-stack text-success me-1"></i> Cash on Delivery (COD)
+              </label>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-green-custom w-100 py-2 fs-6 shadow" onclick="placeFinalOrder()">
+            CONFIRM &amp; PLACE ORDER
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: LIVE ORDER TRACKING (Page 15 DFD)       -->
+  <!-- ============================================== -->
+  <div class="modal fade" id="trackingModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0">
+        <div class="modal-header border-0 pb-0">
+          <div>
+            <h5 class="modal-title fw-bold">Live Tiffin Tracking</h5>
+            <small class="text-muted">Order <span id="trackingOrderId" class="fw-bold text-primary">#101</span></small>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <!-- OTP Box -->
+          <div class="p-3 bg-light rounded-4 text-center mb-3 border">
+            <small class="text-muted d-block text-uppercase fw-bold">Delivery Verification OTP</small>
+            <div class="fs-2 fw-bolder text-primary letter-spacing-2" id="trackingOtp">4829</div>
+            <small class="text-muted">Share this code with rider upon arrival.</small>
+          </div>
+
+          <!-- Stepper Timeline (DFD Level 1) -->
+          <div class="tracking-stepper">
+            <div class="step-node completed">
+              <div class="step-icon"><i class="bi bi-check"></i></div>
+              <div class="step-title">Order Placed</div>
+              <div class="step-desc">Order details received by Home Mess system.</div>
+            </div>
+            <div class="step-node completed">
+              <div class="step-icon"><i class="bi bi-check"></i></div>
+              <div class="step-title">Mess Accepted Order</div>
+              <div class="step-desc">Annapurna Mess confirmed the order.</div>
+            </div>
+            <div class="step-node active">
+              <div class="step-icon"><i class="bi bi-fire"></i></div>
+              <div class="step-title">Preparing in Kitchen</div>
+              <div class="step-desc">Hot chapatis, dal, and thali being packed.</div>
+            </div>
+            <div class="step-node">
+              <div class="step-icon"><i class="bi bi-bicycle"></i></div>
+              <div class="step-title">Out for Delivery</div>
+              <div class="step-desc">Rider picked up and on the way to your location.</div>
+            </div>
+            <div class="step-node">
+              <div class="step-icon"><i class="bi bi-house-check"></i></div>
+              <div class="step-title">Delivered</div>
+              <div class="step-desc">Tiffin delivered to customer.</div>
+            </div>
+          </div>
+
+          <div class="border-top pt-3">
+            <div class="small mb-1"><strong>Delivering to:</strong> <span id="trackingAddress">Tilak Road, Pune</span></div>
+            <div class="small mb-3"><strong>Total Amount:</strong> <span id="trackingTotal">₹120.00</span></div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-outline-dark btn-sm flex-grow-1" onclick="callPhone('9822012345')">
+                <i class="bi bi-telephone"></i> Call Mess
+              </button>
+              <button class="btn btn-outline-success btn-sm flex-grow-1" onclick="callPhone('9765432100')">
+                <i class="bi bi-bicycle"></i> Call Rider
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: PROJECT & COLLEGE CREDENTIALS           -->
+  <!-- ============================================== -->
+  <div class="modal fade" id="projectInfoModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold">🎓 Project Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card p-3 border-0 bg-light rounded-4 mb-3">
+            <h6 class="fw-bold text-primary mb-1">“TIFFIN SERVICE ANDROID APPLICATION” (HOME MESS)</h6>
+            <div class="small text-muted mb-2">Sir Parashurambhau College (Autonomous), Tilak Road, Pune - 411 030</div>
+            <div class="small"><strong>Course:</strong> M.Sc (Computer Science) Part I, Semester II</div>
+            <div class="small"><strong>Project Guide:</strong> Miss. Rutuja Mam</div>
+          </div>
+
+          <div class="card p-3 border-0 bg-light rounded-4 mb-3">
+            <h6 class="fw-bold mb-2">Submitted By:</h6>
+            <div class="small">• <strong>Gaurav Kaluram Khaladkar</strong> (Seat No: 34305)</div>
+            <div class="small">• <strong>Aditay Balasaheb More</strong> (Seat No: 34302)</div>
+          </div>
+
+          <div class="small text-muted">
+            Designed for high performance, local SQLite persistence, multi-role interaction (Student, Chef, Delivery Agent), real-time order tracking, and Android Studio compatibility.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- App JS -->
+  <script src="js/app.js"></script>
+</body>
+</html>
